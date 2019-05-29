@@ -31,12 +31,28 @@ public class MainView extends VerticalLayout {
 		button.addClickListener( e -> absoluteLayout.moveTo(html,324, 100));
 		button.addClickListener( e -> absoluteLayout.replace(red, green));
 		
-		absoluteLayout.add(html, 250,180);
+		absoluteLayout.add(html, 195,269);
 		absoluteLayout.add(button);
 
 		absoluteLayout.add(red,50,100);
 		absoluteLayout.add(green,75,120);
 		absoluteLayout.add(yellow,60, 60);
+		
+		
+		for(int points = 0; points<7; points++) {
+			Div blueCircle = new Div();
+			blueCircle.getElement().getStyle().set("background-color","blue");
+			blueCircle.getElement().getStyle().set("border-radius", "50%");
+			blueCircle.getElement().getStyle().set("height", "50px");
+			blueCircle.getElement().getStyle().set("width", "50px");
+			
+			int posX = (int)(285 + 200*Math.cos(points*2*Math.PI/7));
+			int posY = (int)(325 + 200*Math.sin(points*2*Math.PI/7));
+			
+			absoluteLayout.add(blueCircle, posX, posY);
+			
+			
+		}
 
 		//absoluteLayout.remove(red);
 		//absoluteLayout.addComponentAtIndex(3, red);

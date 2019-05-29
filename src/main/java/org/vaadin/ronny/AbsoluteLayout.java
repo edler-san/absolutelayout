@@ -59,16 +59,16 @@ public class AbsoluteLayout extends Component implements HasSize, HasOrderedComp
 	/**
 	 * Add a component at the given position. Layouting starts at the top left corner of the layout and is relative to that.
 	 * @param c {@link Component} to add
-	 * @param top distance from top
 	 * @param left distance from left side
+	 * @param top distance from top
 	 */
-	public void add(Component c, int top, int left) {
+	public void add(Component c, int left, int top) {
 		HasOrderedComponents.super.add(c);
 
 		Style style = c.getElement().getStyle();
 		style.set("position", "absolute");
-		style.set("top", top+"px");
 		style.set("left", left+"px");
+		style.set("top", top+"px");
 
 	}
 
@@ -78,14 +78,14 @@ public class AbsoluteLayout extends Component implements HasSize, HasOrderedComp
 	 * @param top new distance from top
 	 * @param left new distance from the left
 	 */
-	public void moveTo(Component c, int top, int left) {
+	public void moveTo(Component c, int left, int top) {
 		if(!getChildren().anyMatch( comp -> comp.equals(c))) {
 			throw new IllegalArgumentException("Component is not a child of this layout.");
 		}
 		Style style = c.getElement().getStyle();
 		style.set("position", "absolute");
-		style.set("top", ""+top+"px");
 		style.set("left", ""+left+"px");
+		style.set("top", ""+top+"px");
 	}
 	
 //	/**
@@ -109,8 +109,8 @@ public class AbsoluteLayout extends Component implements HasSize, HasOrderedComp
 		}
 		//copy position to new component to keep the layout consistent
 		Style oldStyle = oldComponent.getElement().getStyle();
-		newComponent.getElement().getStyle().set("top", oldStyle.get("top"));
 		newComponent.getElement().getStyle().set("left", oldStyle.get("left"));
+		newComponent.getElement().getStyle().set("top", oldStyle.get("top"));
 	}
 
 }
